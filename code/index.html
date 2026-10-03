@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mother Nature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/style.css">
+    <!-- Tailwind CSS (build via Node.js + Tailwind CLI, lihat package.json) -->
+    <link rel="stylesheet" href="../Css/tailwind-output.css">
+</head>
+<body>    <header class="navbar" id="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-leaf">
+                    <img src="../Gambar/logo.png">
+                </div>
+                Mother Nature
+            </a>
+            <button class="hamburger" onclick="this.closest('.navbar').querySelector('.nav-menu').classList.toggle('open')" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Beranda</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="pesan.html">Pemesanan</a></li>
+                    <li><a href="riwayat.html">Riwayat</a></li>
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container">
+                <span class="hero-badge">🌱 Distributor Pupuk Terpercaya</span>
+                <h1>Solusi Lengkap <span>Pertanian</span> Modern</h1>
+                <p>Mother Nature menghadirkan produk pupuk berkualitas untuk petani Indonesia yang produktif dan berkelanjutan.</p>
+                <div class="hero-buttons">
+                    <a href="produk.html" class="btn btn-primary">🌾 Lihat Katalog</a>
+                    <a href="pesan.html" class="btn btn-outline">📋 Pesan Sekarang</a>
+                    <a href="tentang.html" class="btn btn-outline">ℹ️ Tentang kami</a>                    
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Produk Unggulan -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🌱 Daftar Produk Pupuk</h2>
+                    <p class="section-desc">Semua produk tersedia dalam satuan kilogram (kg)</p>
+                </div>
+                <div class="produk-grid">
+                    <!-- Produk 1 -->
+                    <article class="produk-card">
+                        <h3>Pupuk Natur T16</h3>
+                        <img src="../Gambar/Pupuk_1.jpeg"width="300" height="200">
+                    </article>
+
+                    <!-- Produk 2 -->
+                    <article class="produk-card">
+                        <h3>Pupuk Natur Urea</h3>
+                        <img src="../Gambar/Pupuk_2.jpeg"width="300" height="200">
+                    </article>
+
+                    <!-- Produk 3 -->
+                    <article class="produk-card">
+                        <h3>Pupuk Naturstar 16-20s</h3>
+                        <img src="../Gambar/Pupuk_3.jpeg"width="300" height="200">
+                    </article>
+
+                    <!-- Produk 4 -->
+                    <article class="produk-card">
+                        <h3>Pupuk Naturfast Powder</h3>
+                        <img src="../Gambar/Pupuk_4.jpeg"width="300" height="200">
+                    </article>
+
+                    <!-- Produk 5 -->
+                    <article class="produk-card">
+                        <h3>Pupuk N-Multi CRF +</h3>
+                        <img src="../Gambar/Pupuk_5.jpeg"width="300" height="200">
+                    </article>
+
+                    <article class="produk-card">
+                        <h3>Pupuk Natur Zinc</h3>
+                        <img src="../Gambar/Pupuk_6.jpeg"width="300" height="200">
+                    </article>
+                </div>
+            </div>
+                <p style="text-align: center; margin-top: 28px;">
+                    <a href="produk.html" class="btn btn-green">Lihat Produk Lebih Detail →</a>
+                </p>
+        </section>
+
+        <!-- Cara Pemesanan -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Cara Pemesanan</h2>
+                    <p class="section-desc">Mudah dan cepat hanya dalam 4 langkah</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Pilih Produk</h3>
+                        <p>Browse produk dan pilih pupuk sesuai kebutuhan lahan Anda</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Isi Form Pesanan</h3>
+                        <p>Lengkapi data pengiriman dan jumlah pesanan melalui form online</p>
+                    
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Pembayaran</h3>
+                        <p>Bayar secara Tunai / Non-tunai</p>
+
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Terima Pesanan</h3>
+                        <p>Produk dikirim langsung ke lokasi Anda dengan aman</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Statistik -->
+        <section class="section section-green">
+            <div class="container">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="stat-box transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Tahun Pengalaman</span>
+                    </div>
+                    <div class="stat-box transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Jenis Pupuk</span>
+                    </div>
+                    <div class="stat-box transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+                        <span class="stat-number">12.000+</span>
+                        <span class="stat-label">Petani Aktif</span>
+                    </div>
+                    <div class="stat-box transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+                        <span class="stat-number">34</span>
+                        <span class="stat-label">Provinsi</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                <div class="logo-leaf">
+                Mother Nature
+                </div>
+                </a>
+                <p>Platform digital untuk kebutuhan pupuk dan agrikultur Indonesia. Terpercaya sejak 2010.</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="pesan.html">Pemesanan</a></li>
+                    <li><a href="riwayat.html">Riwayat</a></li>
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-nav">
+                <h4>Kontak</h4>
+                <p>📞 +62 812-3456-7890</p>
+                <p>✉️ info@mothernature.id</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Mother Nature — Dibuat untuk Tugas Proyek Perancangan Web</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../Js/script.js"></script>
+</body>
+</html>
