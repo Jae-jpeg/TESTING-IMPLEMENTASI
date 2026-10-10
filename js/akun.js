@@ -1,99 +1,119 @@
-// PENDAFTARAN AKUN CUSTOMER MOTHER NATURE
-const REGISTER_STORAGE_KEY = "mothernature_customers";
+```javascript
+// ======================================
+// AKUN CUSTOMER - MOTHER NATURE
+// ======================================
 
-document.addEventListener("DOMContentLoaded", function () {
-    const registerForm = document.getElementById("registerForm");
+// Mengambil data akun yang tersimpan
+function getCustomers() {
+    try {
+        const data = localStorage.getItem("mothernature_customers");
+        return data ? JSON.parse(data) : [];
+    } catch (error) {
+        console.error("Gagal membaca data akun:", error);
+        return [];
+    }
+}
 
-    // Jika halaman ini tidak memiliki form pendaftaran, hentikan proses.
-    if (!registerForm) return;
+// Menyimpan data akun
+function saveCustomers(customers) {
+    localStorage.setItem(
+        "mothernature_customers",
+        JSON.stringify(customers)
+    );
+}
 
-    registerForm.addEventListener("submit", function (event) {
+// Memproses pendaftaran customer
+function initRegister() {
+    const form = document.getElementById("formRegister");
+
+    // Berhenti jika halaman tidak memiliki form pendaftaran
+    if (!form) return;
+
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         const nama = document.getElementById("nama").value.trim();
-        const email = document.getElementById("email").value.trim().toLowerCase();
+        const email = document.getElementById("email").value
+            .trim()
+            .toLowerCase();
         const telepon = document.getElementById("telepon").value.trim();
+        const alamat = document.getElementById("alamat").value.trim();
         const password = document.getElementById("password").value;
         const konfirmasiPassword =
             document.getElementById("konfirmasiPassword").value;
-        const message = document.getElementById("registerMessage");
+        const pesan = document.getElementById("pesan");
 
-        // Fungsi untuk menampilkan pesan kepada pengguna.
-        function showMessage(text, success) {
-            message.textContent = text;
-            message.style.color = success ? "#28743a" : "#c62828";
+        // Memeriksa apakah semua data sudah diisi
+        if (!nama || !email || !telepon || !alamat ||
+            !password || !konfirmasiPassword) {
+            pesan.textContent = "Semua kolom wajib diisi.";
+            return;
         }
 
-        // Memeriksa apakah kedua kata sandi sama.
+        // Memeriksa kesesuaian password
         if (password !== konfirmasiPassword) {
-            showMessage("Konfirmasi kata sandi tidak cocok.", false);
+            pesan.textContent =
+                "Password dan konfirmasi password tidak cocok.";
             return;
         }
 
+        // Memeriksa panjang password
         if (password.length < 6) {
-            showMessage("Kata sandi harus minimal 6 karakter.", false);
+            pesan.textContent =
+                "Password minimal terdiri dari 6 karakter.";
             return;
         }
 
-        let customers = [];
+        let customers;
 
-        // Membaca akun yang pernah didaftarkan di browser ini.
         try {
-            const savedCustomers = localStorage.getItem(REGISTER_STORAGE_KEY);
-            customers = savedCustomers ? JSON.parse(savedCustomers) : [];
-
-            if (!Array.isArray(customers)) {
-                customers = [];
-            }
+            customers = getCustomers();
         } catch (error) {
-            showMessage("Data akun tidak dapat dibaca. Coba lagi.", false);
+            pesan.textContent = "Data akun gagal dibaca.";
             return;
         }
 
-        // Memeriksa apakah email sudah terdaftar.
-        const emailSudahAda = customers.some(function (customer) {
-            return customer.email &&
-                customer.email.toLowerCase() === email;
+        // Memeriksa email yang sudah terdaftar
+        const emailTerdaftar = customers.some(function (customer) {
+            return customer.email === email;
         });
 
-        if (emailSudahAda) {
-            showMessage(
-                "Email ini sudah terdaftar. Silakan gunakan email lain.",
-                false
-            );
+        if (emailTerdaftar) {
+            pesan.textContent =
+                "Email sudah terdaftar. Silakan gunakan email lain.";
             return;
         }
 
-        // Membuat data akun baru untuk keperluan demo.
+        // Membuat data customer baru
         const customerBaru = {
-            id: "CUST-" + Date.now(),
+            id: "CUS-" + Date.now(),
             nama: nama,
             email: email,
             telepon: telepon,
+            alamat: alamat,
             password: password,
             tanggalDaftar: new Date().toISOString()
         };
 
-        customers.push(customerBaru);
-
-        // Menyimpan akun ke browser.
+        // Menyimpan akun baru
         try {
-            localStorage.setItem(
-                REGISTER_STORAGE_KEY,
-                JSON.stringify(customers)
-            );
+            customers.push(customerBaru);
+            saveCustomers(customers);
 
-            showMessage(
-                "Pendaftaran berhasil! Akun kamu sudah tersimpan di browser ini.",
-                true
-            );
+            pesan.textContent =
+                "Pendaftaran berhasil! Silakan login menggunakan akun kamu.";
 
-            registerForm.reset();
+            form.reset();
         } catch (error) {
-            showMessage(
-                "Akun gagal disimpan. Penyimpanan browser mungkin penuh atau tidak tersedia.",
-                false
-            );
+            pesan.textContent =
+                "Pendaftaran gagal. Silakan coba lagi.";
+            console.error("Gagal menyimpan akun:", error);
         }
     });
+}
+
+// Menjalankan kode setelah halaman selesai dimuat
+document.addEventListener("DOMContentLoaded", function () {
+    initRegister();
 });
+```
