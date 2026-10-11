@@ -42,9 +42,14 @@
 
         function setVisibility(element, visible) {
             if (!element) return;
-
+        
             element.hidden = !visible;
-            element.style.display = visible ? "block" : "none";
+        
+            if (visible) {
+                element.style.removeProperty("display");
+            } else {
+                element.style.setProperty("display", "none", "important");
+            }
         }
 
         function renderProfile() {
