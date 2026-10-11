@@ -67,6 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
         pesanLogin.style.color = "green";
 
         // Kembali ke halaman utama.
-        window.location.href = "index.html";
+        window.location.href = "pesan.html";
     });
 });
