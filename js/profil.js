@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
             logoutButton.hidden = true;
             logoutButton.style.display = "none";
 
-            loginLink.style.display = "none";
-            registerLink.style.display = "none";
+            loginLink.style.display = "";
+            registerLink.style.display = "";
         }
     }
 
