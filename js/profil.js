@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
             historyLink.hidden = false;
             logoutButton.hidden = false;
         } else {
-            avatar.textContent = "♙";
-            name.textContent = "Masuk";
+            avatar.textContent = "";
+            name.textContent = "";
             greeting.textContent = "Selamat datang!";
 
             loginLink.hidden = false;
