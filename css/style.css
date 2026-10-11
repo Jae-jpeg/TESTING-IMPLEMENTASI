@@ -624,7 +624,8 @@ tbody tr:hover { background-color: #f0f7e8; }
     display: block;
     width: 100%;
     box-sizing: border-box;
-    padding: 11px 10px;
+    margin: 3px 0;
+    padding: 11px 12px;
     border: none;
     border-radius: 9px;
     background: transparent;
@@ -634,32 +635,17 @@ tbody tr:hover { background-color: #f0f7e8; }
     font-family: inherit;
     font-size: 13px;
     cursor: pointer;
+    line-height: 1.5;
 }
 
 .navbar .account-dropdown a:hover,
 .navbar .account-dropdown button:hover {
     background: #f1f6ed;
-/* Pemisah menu riwayat dan logout */
-.navbar #accountHistory {
-    margin-bottom: 6px;
 }
 
 .navbar #accountLogout {
     margin-top: 8px;
-    padding-top: 14px;
     border-top: 1px solid #edf0eb;
-    border-radius: 0 0 9px 9px;
+    border-radius: 0;
+    padding-top: 14px;
 }
-
-}
-
-@media (max-width: 768px) {
-    .navbar .nav-account {
-        margin-left: auto;
-    }
-
-    .navbar .account-dropdown {
-        right: 0;
-    }
-}
-
