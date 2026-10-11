@@ -119,4 +119,4 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Kesalahan menyimpan akun:", error);
         }
     });
-});
+})
