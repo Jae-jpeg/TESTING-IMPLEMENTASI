@@ -50,10 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
         registerLink.style.display = "none";
 
         historyLink.hidden = false;
-        historyLink.style.display = "";
+        historyLink.style.display = "block";
 
         logoutButton.hidden = false;
-        logoutButton.style.display = "";
+        logoutButton.style.display = "block";
 
     } else {
         avatar.textContent = "";
