@@ -646,3 +646,31 @@ tbody tr:hover { background-color: #f0f7e8; }
     border-radius: 0;
     padding-top: 14px;
 }
+
+/* ===== PERBAIKAN DROPDOWN PROFIL ===== */
+.navbar .nav-account {
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+.navbar .account-trigger {
+    position: relative;
+    z-index: 10000;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.navbar .account-dropdown {
+    z-index: 10001;
+    pointer-events: auto;
+}
+
+.navbar .account-dropdown a[hidden],
+.navbar .account-dropdown button[hidden] {
+    display: none !important;
+}
+
+.navbar .account-dropdown[hidden] {
+    display: none !important;
+}
