@@ -24,56 +24,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function renderProfile() {
-    const customer = getLogin();
+        const customer = getLogin();
 
-    if (customer && customer.nama && customer.email) {
-        const nama = customer.nama.trim();
+        if (customer && customer.nama && customer.email) {
+            const nama = customer.nama.trim();
 
-        const initials = nama
-            .split(/\s+/)
-            .filter(Boolean)
-            .slice(0, 2)
-            .map(function (kata) {
-                return kata.charAt(0);
-            })
-            .join("")
-            .toUpperCase();
+            const initials = nama
+                .split(/\s+/)
+                .filter(Boolean)
+                .slice(0, 2)
+                .map(function (kata) {
+                    return kata.charAt(0);
+                })
+                .join("")
+                .toUpperCase();
 
-        avatar.textContent = initials || "?";
-        name.textContent = nama;
-        greeting.textContent = "Halo, " + nama + "!";
+            avatar.textContent = initials || "?";
+            greeting.textContent = "Halo, " + nama + "!";
 
-        loginLink.hidden = true;
-        loginLink.style.display = "none";
+            loginLink.hidden = true;
+            registerLink.hidden = true;
+            historyLink.hidden = false;
+            logoutButton.hidden = false;
+        } else {
+            avatar.textContent = "";
+            greeting.textContent = "Selamat datang!";
 
-        registerLink.hidden = true;
-        registerLink.style.display = "none";
-
-        historyLink.hidden = false;
-        historyLink.style.display = "block";
-
-        logoutButton.hidden = false;
-        logoutButton.style.display = "block";
-
-    } else {
-        avatar.textContent = "";
-        name.textContent = "";
-        greeting.textContent = "Selamat datang!";
-
-        loginLink.hidden = false;
-        loginLink.style.display = "";
-
-        registerLink.hidden = false;
-        registerLink.style.display = "";
-
-        historyLink.hidden = true;
-        historyLink.style.display = "none";
-
-        logoutButton.hidden = true;
-        logoutButton.style.display = "none";
+            loginLink.hidden = false;
+            registerLink.hidden = false;
+            historyLink.hidden = true;
+            logoutButton.hidden = true;
+        }
     }
 
-    trigger.addEventListener("click", function () {
+    trigger.addEventListener("click", function (event) {
+        event.stopPropagation();
+
         dropdown.hidden = !dropdown.hidden;
 
         trigger.setAttribute(
@@ -96,4 +82,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderProfile();
 });
-
