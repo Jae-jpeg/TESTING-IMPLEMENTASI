@@ -601,10 +601,11 @@ tbody tr:hover { background-color: #f0f7e8; }
 
 .navbar .account-dropdown[hidden] {
     display: none !important;
+}
+
 .navbar #accountHistory[hidden],
 .navbar #accountLogout[hidden] {
     display: none !important;
-}
 }
 
 .navbar .account-greeting {
