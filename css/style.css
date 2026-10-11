@@ -674,3 +674,22 @@ tbody tr:hover { background-color: #f0f7e8; }
 .navbar .account-dropdown[hidden] {
     display: none !important;
 }
+
+/* ===== FIX VISIBILITAS MENU PROFIL ===== */
+.navbar #accountLogin[hidden],
+.navbar #accountRegister[hidden],
+.navbar #accountHistory[hidden],
+.navbar #accountLogout[hidden] {
+    display: none !important;
+}
+
+.navbar #accountLogin:not([hidden]),
+.navbar #accountRegister:not([hidden]),
+.navbar #accountHistory:not([hidden]),
+.navbar #accountLogout:not([hidden]) {
+    display: block;
+}
+
+.navbar .account-dropdown[hidden] {
+    display: none !important;
+}
