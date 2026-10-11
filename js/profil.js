@@ -5,9 +5,7 @@
         const dropdown = document.getElementById("accountDropdown");
         const navAccount = document.getElementById("navAccount");
 
-        if (!trigger || !dropdown || !navAccount) {
-            return;
-        }
+        if (!trigger || !dropdown || !navAccount) return;
 
         const avatar = document.getElementById("accountAvatar");
         const greeting = document.getElementById("accountGreeting");
@@ -18,23 +16,51 @@
 
         function getLogin() {
             try {
-                return JSON.parse(
-                    sessionStorage.getItem("mothernature_customer_login")
+                const data = sessionStorage.getItem(
+                    "mothernature_customer_login"
                 );
+
+                if (!data) return null;
+
+                const customer = JSON.parse(data);
+
+                if (
+                    customer &&
+                    typeof customer.nama === "string" &&
+                    customer.nama.trim() !== "" &&
+                    typeof customer.email === "string" &&
+                    customer.email.trim() !== ""
+                ) {
+                    return customer;
+                }
+
+                return null;
             } catch (error) {
                 return null;
             }
         }
 
+        function setVisibility(element, visible) {
+            if (!element) return;
+
+            element.hidden = !visible;
+            element.style.display = visible ? "block" : "none";
+        }
+
         function renderProfile() {
             const customer = getLogin();
+            const isLoggedIn = Boolean(customer);
 
-            if (customer && customer.nama && customer.email) {
+            setVisibility(loginLink, !isLoggedIn);
+            setVisibility(registerLink, !isLoggedIn);
+            setVisibility(historyLink, isLoggedIn);
+            setVisibility(logoutButton, isLoggedIn);
+
+            if (isLoggedIn) {
                 const nama = customer.nama.trim();
 
                 const initials = nama
                     .split(/\s+/)
-                    .filter(Boolean)
                     .slice(0, 2)
                     .map(function (kata) {
                         return kata.charAt(0);
@@ -44,19 +70,9 @@
 
                 avatar.textContent = initials || "♙";
                 greeting.textContent = "Halo, " + nama + "!";
-
-                loginLink.hidden = true;
-                registerLink.hidden = true;
-                historyLink.hidden = false;
-                logoutButton.hidden = false;
             } else {
                 avatar.textContent = "♙";
                 greeting.textContent = "Selamat datang!";
-
-                loginLink.hidden = false;
-                registerLink.hidden = false;
-                historyLink.hidden = true;
-                logoutButton.hidden = true;
             }
         }
 
@@ -64,10 +80,11 @@
             event.preventDefault();
             event.stopPropagation();
 
-            const akanDibuka = dropdown.hidden;
-
-            dropdown.hidden = !akanDibuka;
-            trigger.setAttribute("aria-expanded", String(akanDibuka));
+            dropdown.hidden = !dropdown.hidden;
+            trigger.setAttribute(
+                "aria-expanded",
+                String(!dropdown.hidden)
+            );
         });
 
         dropdown.addEventListener("click", function (event) {
@@ -81,10 +98,12 @@
             }
         });
 
-        logoutButton.addEventListener("click", function () {
-            sessionStorage.removeItem("mothernature_customer_login");
-            window.location.href = "index.html";
-        });
+        if (logoutButton) {
+            logoutButton.addEventListener("click", function () {
+                sessionStorage.removeItem("mothernature_customer_login");
+                window.location.href = "index.html";
+            });
+        }
 
         renderProfile();
     }
