@@ -47,15 +47,20 @@ document.addEventListener("DOMContentLoaded", function () {
             registerLink.hidden = true;
             historyLink.hidden = false;
             logoutButton.hidden = false;
+
         } else {
             avatar.textContent = "";
             name.textContent = "";
             greeting.textContent = "Selamat datang!";
-
+        
             loginLink.hidden = false;
             registerLink.hidden = false;
+        
             historyLink.hidden = true;
+            historyLink.style.display = "none";
+        
             logoutButton.hidden = true;
+            logoutButton.style.display = "none";
         }
     }
 
