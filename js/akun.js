@@ -1,4 +1,3 @@
-
 // ==========================================
 // PENDAFTARAN AKUN CUSTOMER MOTHER NATURE
 // ==========================================
@@ -121,4 +120,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-```
