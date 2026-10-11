@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Customer - Green Tani</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <main class="container" style="max-width: 450px; margin: 50px auto; padding: 24px;">
+        <h1>Login Customer</h1>
+        <p>Silakan masuk ke akun Green Tani kamu.</p>
 
+        <form id="formLogin">
+            <div style="margin-bottom: 16px;">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    style="display:block; width:100%; padding:10px; box-sizing:border-box;"
+                >
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    style="display:block; width:100%; padding:10px; box-sizing:border-box;"
+                >
+            </div>
+
+            <button type="submit">Login</button>
+
+            <p id="pesanLogin" role="status"></p>
+        </form>
+
+        <p>
+            Belum punya akun?
+            <a href="register.html">Daftar di sini</a>
+        </p>
+
+        <p>
+            <a href="index.html">Kembali ke beranda</a>
+        </p>
+    </main>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>
